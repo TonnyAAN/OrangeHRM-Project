@@ -1,7 +1,7 @@
 Feature: Orange HRM application login
-
-  Scenario: Login with username and password
+  Background:
     Given I am on the login page
+  Scenario: Login with username and password
     When I enter username "admin"
     And I enter password "admin123"
     And I click on the login button
