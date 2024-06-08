@@ -19,13 +19,15 @@ public class loginHrmSteps {
     public loginHrmSteps(TestContext context){
         this.context = context;
         this.loginpage = context.getLoginPage();
+        this.wait = context.getWait();
     }
 
 
     @Given("I am on the login page")
     public void i_am_on_the_login_page() {
-        context.getDriver().get("https://opensource-demo.orangehrmlive.com/");
-        wait = new WebDriverWait(context.getDriver(), Duration.ofSeconds(10));
+        //context.getDriver().get("https://opensource-demo.orangehrmlive.com/");
+        context.navigateToLoginPage();
+        //wait = new WebDriverWait(context.getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(loginpage.getUsernameField()));
     }
     @When("I enter username {string}")
