@@ -8,3 +8,7 @@ Feature: Orange HRM application login
     Then I should be logged in successfully
 
 
+  Scenario: Invalid login
+    When I enter "invaliduser" and "invalidpass"
+    And I click on the login button
+    Then I should see an error message "Invalid credentials"

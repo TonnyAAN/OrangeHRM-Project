@@ -13,9 +13,9 @@ import pages.LoginPage;
 import java.time.Duration;
 
 public class loginHrmSteps {
-    public LoginPage loginpage ;
-    public TestContext context;
-    public WebDriverWait wait;
+    private LoginPage loginpage ;
+    private TestContext context;
+    private WebDriverWait wait;
     public loginHrmSteps(TestContext context){
         this.context = context;
         this.loginpage = context.getLoginPage();
@@ -49,6 +49,18 @@ public class loginHrmSteps {
         String dashboardlabel = context.getDriver().findElement(loginpage.getDashboardLabel()).getText();
         Assert.assertEquals(dashboardlabel,"Dashboard");
 
+    }
+
+    @When("I enter {string} and {string}")
+    public void i_enter_and(String invaliduser, String invalidpassword) {
+       loginpage.userNameEnter(invaliduser);
+       loginpage.passwordEnter(invalidpassword);
+    }
+    @Then("I should see an error message {string}")
+    public void i_should_see_an_error_message(String errormsg) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(loginpage.getErrorMsg()));
+        String actualerrorlabel = context.getDriver().findElement(loginpage.getErrorMsg()).getText();
+        Assert.assertEquals( actualerrorlabel,errormsg);
     }
     @After
     public void tearDown() {
