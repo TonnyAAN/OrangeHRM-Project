@@ -44,7 +44,7 @@ public class loginHrmSteps {
     }
     @Then("I should be logged in successfully")
     public void i_should_be_logged_in_successfully() {
-        wait = new WebDriverWait(context.getDriver(), Duration.ofSeconds(10));
+        //wait = new WebDriverWait(context.getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(loginpage.getDashboardLabel()));
         String dashboardlabel = context.getDriver().findElement(loginpage.getDashboardLabel()).getText();
         Assert.assertEquals(dashboardlabel,"Dashboard");
