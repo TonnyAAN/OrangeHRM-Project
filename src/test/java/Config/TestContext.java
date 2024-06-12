@@ -4,6 +4,7 @@ package Config;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.AddEmployeePage;
 import pages.LoginPage;
 import pages.ForgotPage;
 
@@ -16,6 +17,8 @@ public class TestContext {
     public LoginPage loginpage;
     public ForgotPage forgotpage;
 
+    public AddEmployeePage addemployeepage;
+
     public WebDriverWait wait;
     public TestContext(){
         System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+ "/src/test/resources/drivers/chromedriver.exe");
@@ -23,10 +26,14 @@ public class TestContext {
         driver.manage().window().maximize();
         loginpage = new LoginPage(driver);
         forgotpage = new ForgotPage(driver);
+        addemployeepage = new AddEmployeePage(driver);
         wait = new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT));
     }
     public WebDriver getDriver(){
         return driver;
+    }
+    public void navigateToLoginPage() {
+        driver.get(BASE_URL);
     }
 
     public LoginPage getLoginPage(){
@@ -36,16 +43,18 @@ public class TestContext {
     public  ForgotPage getForgotPage(){
         return forgotpage;
     }
+
+    public AddEmployeePage getAddempPage(){
+        return addemployeepage;
+    }
     public WebDriverWait getWait() {
         return wait;
     }
-    public void navigateToLoginPage() {
-        driver.get(BASE_URL);
-    }
+
 
     public void tearDown(){
-        if(driver!=null){
-            driver.quit();
+      if(driver!=null){
+         driver.quit();
         }
-    }
+   }
 }

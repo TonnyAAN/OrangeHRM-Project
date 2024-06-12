@@ -10,8 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import pages.LoginPage;
 
-import java.time.Duration;
-
 public class loginHrmSteps {
     private LoginPage loginpage ;
     private TestContext context;
@@ -21,7 +19,6 @@ public class loginHrmSteps {
         this.loginpage = context.getLoginPage();
         this.wait = context.getWait();
     }
-
 
     @Given("I am on the login page")
     public void i_am_on_the_login_page() {
@@ -48,9 +45,7 @@ public class loginHrmSteps {
         wait.until(ExpectedConditions.visibilityOfElementLocated(loginpage.getDashboardLabel()));
         String dashboardlabel = context.getDriver().findElement(loginpage.getDashboardLabel()).getText();
         Assert.assertEquals(dashboardlabel,"Dashboard");
-
     }
-
     @When("I enter {string} and {string}")
     public void i_enter_and(String invaliduser, String invalidpassword) {
        loginpage.userNameEnter(invaliduser);
@@ -65,7 +60,7 @@ public class loginHrmSteps {
     @After
     public void tearDown() {
         context.tearDown();
-    }
+   }
 
 
 }
