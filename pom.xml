@@ -6,7 +6,6 @@
   <artifactId>OrangeHRM</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
-
   <name>OrangeHRM</name>
   <url>http://maven.apache.org</url>
 
@@ -21,7 +20,7 @@
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
-      <version>4.21.0</version>
+      <version>4.22.0</version>
     </dependency>
     <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-java -->
     <dependency>
@@ -40,6 +39,7 @@
       <artifactId>testng</artifactId>
       <version>7.10.1</version>
     </dependency>
+
     <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer -->
     <dependency>
       <groupId>io.cucumber</groupId>
@@ -52,5 +52,6 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+
   </dependencies>
 </project>

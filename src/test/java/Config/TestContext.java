@@ -1,12 +1,15 @@
 package Config;
 
 
+
+import io.cucumber.java.After;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import pages.AddEmployeePage;
-import pages.LoginPage;
-import pages.ForgotPage;
+import pages.*;
+
+import utilities.DropdownUtils;
+import utilities.MenuclickUtils;
 
 import java.time.Duration;
 
@@ -16,10 +19,13 @@ public class TestContext {
     public WebDriver driver;
     public LoginPage loginpage;
     public ForgotPage forgotpage;
-
     public AddEmployeePage addemployeepage;
-
+    public SearchempPage searchemppage;
+    public LoadPage loadpage;
+    public DropdownUtils dropdownUtils;
+    public MenuclickUtils menuclickUtils;
     public WebDriverWait wait;
+
     public TestContext(){
         System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+ "/src/test/resources/drivers/chromedriver.exe");
         driver = new ChromeDriver();
@@ -27,6 +33,11 @@ public class TestContext {
         loginpage = new LoginPage(driver);
         forgotpage = new ForgotPage(driver);
         addemployeepage = new AddEmployeePage(driver);
+        searchemppage = new SearchempPage(driver);
+        loadpage = new LoadPage(driver);
+        dropdownUtils = new DropdownUtils(driver);
+        menuclickUtils = new MenuclickUtils(driver);
+
         wait = new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT));
     }
     public WebDriver getDriver(){
@@ -47,14 +58,29 @@ public class TestContext {
     public AddEmployeePage getAddempPage(){
         return addemployeepage;
     }
+
+    public SearchempPage getSearchempPage(){
+        return searchemppage;
+    }
+    public LoadPage getLoadPage(){
+        return loadpage;
+    }
+
+    public DropdownUtils getDropdownUtils(){
+        return dropdownUtils;
+    }
+    public MenuclickUtils getMenuclickUtils(){
+        return menuclickUtils;
+    }
     public WebDriverWait getWait() {
         return wait;
     }
 
 
     public void tearDown(){
-      if(driver!=null){
+
+     if(driver!=null){
          driver.quit();
-        }
+     }
    }
 }

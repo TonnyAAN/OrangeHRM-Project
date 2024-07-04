@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
 
-    private WebDriver driver;
+    public WebDriver driver;
     public LoginPage(WebDriver driver){
         this.driver= driver;
     }
@@ -13,7 +13,6 @@ public class LoginPage {
     private By PasswordXpath = By.xpath("//input[@placeholder='Password']");
     private By ClickLogin = By.xpath("//button[@type='submit']");
     private By DashBoardLabel = By.xpath("//h6[normalize-space()='Dashboard']");
-
     private By ErrorMsg = By.xpath("//p[@class='oxd-text oxd-text--p oxd-alert-content-text']");
 
     public By getUsernameField() {

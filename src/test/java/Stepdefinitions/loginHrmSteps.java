@@ -9,11 +9,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import pages.LoginPage;
-
 public class loginHrmSteps {
     private LoginPage loginpage ;
     private TestContext context;
     private WebDriverWait wait;
+
     public loginHrmSteps(TestContext context){
         this.context = context;
         this.loginpage = context.getLoginPage();
@@ -22,10 +22,10 @@ public class loginHrmSteps {
 
     @Given("I am on the login page")
     public void i_am_on_the_login_page() {
-        //context.getDriver().get("https://opensource-demo.orangehrmlive.com/");
+
         context.navigateToLoginPage();
-        //wait = new WebDriverWait(context.getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(loginpage.getUsernameField()));
+
     }
     @When("I enter username {string}")
     public void i_enter_username(String username) {
