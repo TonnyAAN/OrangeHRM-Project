@@ -2,15 +2,17 @@ package Config;
 
 
 
-import io.cucumber.java.After;
+
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.*;
-
 import utilities.DropdownUtils;
 import utilities.MenuclickUtils;
-
+import io.qameta.allure.Allure;
+import java.io.ByteArrayInputStream;
+import org.openqa.selenium.TakesScreenshot;
 import java.time.Duration;
 
 public class TestContext {
@@ -76,11 +78,16 @@ public class TestContext {
         return wait;
     }
 
+    public void takeScreenshot(String name) {
+        Allure.addAttachment(name, new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
+    }
+
 
     public void tearDown(){
 
      if(driver!=null){
          driver.quit();
+
      }
    }
 }
