@@ -23,7 +23,7 @@ public class forgotSteps {
     }
     @When("I click on the  {string} link")
     public void i_click_on_the_link(String string) {
-         context.navigateToLoginPage();
+        context.navigateToLoginPage();
          wait.until(ExpectedConditions.visibilityOfElementLocated(forgotpage.getforgotlinktext()));
          forgotpage.forgotlinkClick();
          wait.until(ExpectedConditions.visibilityOfElementLocated(forgotpage.forgotTitleText()));

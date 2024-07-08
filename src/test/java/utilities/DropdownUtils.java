@@ -3,6 +3,7 @@ package utilities;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -25,7 +26,7 @@ public class DropdownUtils {
         boolean optionFound = false;
         for (WebElement option : options) {
             String optionText = option.getText().trim();
-            System.out.println("Option text: '" +optionText+ "'");
+            System.out.println("Option text: '" + optionText + "'");
             if (optionText.equalsIgnoreCase(visibleText.trim())) {
                 System.out.println("Match found. Clicking option.");
                 option.click();

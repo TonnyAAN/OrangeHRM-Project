@@ -9,11 +9,12 @@ public class MenuclickUtils {
     private WebDriver driver;
 
 
-    public MenuclickUtils(WebDriver driver){
+    public MenuclickUtils(WebDriver driver) {
 
         this.driver = driver;
     }
-    public void menuClickpage(String page){
+
+    public void menuClickpage(String page) {
         WebElement element = driver.findElement(By.xpath("//span[text()='" + page + "']"));
         element.click();
     }

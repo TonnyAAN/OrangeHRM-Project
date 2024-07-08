@@ -1,18 +1,21 @@
 package Config;
 
 
-
-
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.*;
+import utilities.ConfigReader;
 import utilities.DropdownUtils;
 import utilities.MenuclickUtils;
 import io.qameta.allure.Allure;
+
 import java.io.ByteArrayInputStream;
+
 import org.openqa.selenium.TakesScreenshot;
+
 import java.time.Duration;
 
 public class TestContext {
@@ -28,9 +31,18 @@ public class TestContext {
     public MenuclickUtils menuclickUtils;
     public WebDriverWait wait;
 
-    public TestContext(){
-        System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+ "/src/test/resources/drivers/chromedriver.exe");
-        driver = new ChromeDriver();
+
+    public TestContext() {
+        String browserType = ConfigReader.getProperty("browser");
+        if ("firefox".equalsIgnoreCase(browserType)) {
+            System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "/src/test/resources/drivers/geckodriver.exe");
+            driver = new FirefoxDriver();
+        } else {
+            // Default to Chrome if browser is not specified or is set to "chrome"
+            System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "/src/test/resources/drivers/chromedriver.exe");
+            driver = new ChromeDriver();
+        }
+
         driver.manage().window().maximize();
         loginpage = new LoginPage(driver);
         forgotpage = new ForgotPage(driver);
@@ -42,38 +54,43 @@ public class TestContext {
 
         wait = new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIMEOUT));
     }
-    public WebDriver getDriver(){
+
+    public WebDriver getDriver() {
         return driver;
     }
+
     public void navigateToLoginPage() {
         driver.get(BASE_URL);
     }
 
-    public LoginPage getLoginPage(){
+    public LoginPage getLoginPage() {
         return loginpage;
     }
 
-    public  ForgotPage getForgotPage(){
+    public ForgotPage getForgotPage() {
         return forgotpage;
     }
 
-    public AddEmployeePage getAddempPage(){
+    public AddEmployeePage getAddempPage() {
         return addemployeepage;
     }
 
-    public SearchempPage getSearchempPage(){
+    public SearchempPage getSearchempPage() {
         return searchemppage;
     }
-    public LoadPage getLoadPage(){
+
+    public LoadPage getLoadPage() {
         return loadpage;
     }
 
-    public DropdownUtils getDropdownUtils(){
+    public DropdownUtils getDropdownUtils() {
         return dropdownUtils;
     }
-    public MenuclickUtils getMenuclickUtils(){
+
+    public MenuclickUtils getMenuclickUtils() {
         return menuclickUtils;
     }
+
     public WebDriverWait getWait() {
         return wait;
     }
@@ -83,11 +100,13 @@ public class TestContext {
     }
 
 
-    public void tearDown(){
+    public void tearDown() {
 
-     if(driver!=null){
-         driver.quit();
+        if (driver != null) {
+            driver.quit();
 
-     }
-   }
+        }
+    }
+
+
 }

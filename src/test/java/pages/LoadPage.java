@@ -7,10 +7,11 @@ public class LoadPage {
 
     private WebDriver driver;
 
-    public LoadPage(WebDriver driver){
+    public LoadPage(WebDriver driver) {
 
         this.driver = driver;
     }
+
     By Directory = By.xpath("//span[text()='Directory']");
     By Claim = By.xpath("//span[text()='Claim']");
     By Buzz = By.xpath("//span[text()='Buzz']");
@@ -20,41 +21,47 @@ public class LoadPage {
     By Time = By.xpath("//span[text()='Time']");
     By Leave = By.xpath("//span[text()='Leave']");
     By Pim = By.xpath("//span[text()='PIM']");
-    By Admin =By.xpath("//span[text()='Admin']");
+    By Admin = By.xpath("//span[text()='Admin']");
 
-    public void directoryClick(){
+    public void directoryClick() {
         driver.findElement(Directory).click();
     }
-    public void claimClick(){
+
+    public void claimClick() {
         driver.findElement(Claim).click();
     }
-    public void buzzClick(){
+
+    public void buzzClick() {
         driver.findElement(Buzz).click();
     }
-    public void performanceClick(){
+
+    public void performanceClick() {
         driver.findElement(Performance).click();
     }
-    public void myinfoClick(){
+
+    public void myinfoClick() {
         driver.findElement(Myinfo).click();
     }
-    public void recruitmentClick(){
+
+    public void recruitmentClick() {
         driver.findElement(Recruitment).click();
     }
-    public void timeClick(){
+
+    public void timeClick() {
         driver.findElement(Time).click();
     }
-    public void leaveClick(){
+
+    public void leaveClick() {
         driver.findElement(Leave).click();
     }
-    public void pimClick(){
+
+    public void pimClick() {
         driver.findElement(Pim).click();
     }
-    public void adminClick(){
+
+    public void adminClick() {
         driver.findElement(Admin).click();
     }
-
-
-
 
 
 }

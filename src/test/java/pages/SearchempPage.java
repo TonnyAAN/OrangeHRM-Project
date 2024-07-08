@@ -34,7 +34,7 @@ public class SearchempPage {
         return JobField;
     }
 
-    public By getLocationField(){
+    public By getLocationField() {
         return LocationField;
     }
 
@@ -53,9 +53,11 @@ public class SearchempPage {
     public void enter() {
         driver.findElement(EmpnameField).sendKeys(Keys.ENTER);
     }
+
     public void empnameclick() {
         driver.findElement(EmpnameField).click();
     }
+
     public void getSearch() {
         driver.findElement(search).click();
 

@@ -6,9 +6,11 @@ import org.openqa.selenium.WebDriver;
 public class LoginPage {
 
     public WebDriver driver;
-    public LoginPage(WebDriver driver){
-        this.driver= driver;
+
+    public LoginPage(WebDriver driver) {
+        this.driver = driver;
     }
+
     private By UsernameXpath = By.xpath("//input[@placeholder='Username']");
     private By PasswordXpath = By.xpath("//input[@placeholder='Password']");
     private By ClickLogin = By.xpath("//button[@type='submit']");
@@ -18,19 +20,24 @@ public class LoginPage {
     public By getUsernameField() {
         return UsernameXpath;
     }
-    public By getDashboardLabel(){
+
+    public By getDashboardLabel() {
         return DashBoardLabel;
     }
-    public By getErrorMsg(){
+
+    public By getErrorMsg() {
         return ErrorMsg;
     }
-    public void userNameEnter(String username){
-    driver.findElement(UsernameXpath).sendKeys(username);
+
+    public void userNameEnter(String username) {
+        driver.findElement(UsernameXpath).sendKeys(username);
     }
-    public void passwordEnter(String password){
-    driver.findElement(PasswordXpath).sendKeys(password);
+
+    public void passwordEnter(String password) {
+        driver.findElement(PasswordXpath).sendKeys(password);
     }
-    public void loginButtonClick(){
+
+    public void loginButtonClick() {
         driver.findElement(ClickLogin).click();
     }
 }
